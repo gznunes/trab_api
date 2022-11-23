@@ -18,12 +18,34 @@ app.post("/livros", async(req, res) => {
     }
 })
 
+app.post("/reservas", async(req, res) => {
+    try {
+        const reserva = req.body;
+        const sql = "INSERT INTO reservas(nome,idlivro) VALUES ($1,$2) RETURNING *"
+        const values = [reserva.nome,reserva.idlivro]
+        const novoReserva = await pool.query(sql, values)
+        res.json(novoReserva.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+ 
+
 //listar
 
 app.get("/livros", async(req, res) =>{
     try {
         const livros = await pool.query("SELECT * FROM LIVROS");
         res.json(livros.rows)
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+app.get("/reservas", async(req, res) =>{
+    try {
+        const reservas = await pool.query("SELECT * FROM RESERVAS");
+        res.json(reservas.rows)
     } catch (err) {
         console.error(err.message);
     }
