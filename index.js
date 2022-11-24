@@ -34,12 +34,12 @@ app.post("/reservas", async(req, res) => {
 //listar
 
 app.get("/livros", async(req, res) =>{
-    try {
+    // try {
         const livros = await pool.query("SELECT * FROM LIVROS");
         res.json(livros.rows)
-    } catch (err) {
-        console.error(err.message);
-    }
+    // } catch (err) {
+    //     console.error(err.message);
+    // }
 });
 
 app.get("/reservas", async(req, res) =>{
