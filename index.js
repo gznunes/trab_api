@@ -1,5 +1,8 @@
 const express = require("express");
+const cors = require('cors');
+
 const app = express();
+app.use(cors());
 const pool = require("./db");
 
 app.use(express.json())
@@ -92,7 +95,7 @@ app.delete("/livros/:id", async(req, res) =>{
 
 
 
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log("server listening on port 3001")
 });
 
