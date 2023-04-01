@@ -21,6 +21,18 @@ app.post("/livros", async(req, res) => {
     }
 })
 
+app.post("/chamada", async(req, res) => {
+    try {
+        const chamada = req.body;
+        const sql = "INSERT INTO CHAMADA(sala,nome) VALUES ($1,$2) RETURNING *"
+        const values = [chamada.sala,chamada.nome]
+        const novaChamada = await pool.query(sql, values)
+        res.json(novaChamada.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 app.post("/reservas", async(req, res) => {
     try {
         const reserva = req.body;
@@ -40,6 +52,15 @@ app.get("/livros", async(req, res) =>{
     // try {
         const livros = await pool.query("SELECT * FROM LIVROS");
         res.json(livros.rows)
+    // } catch (err) {
+    //     console.error(err.message);
+    // }
+});
+
+app.get("/chamada", async(req, res) =>{
+    // try {
+        const chamadas = await pool.query("SELECT * FROM CHAMADA");
+        res.json(chamadas.rows)
     // } catch (err) {
     //     console.error(err.message);
     // }
