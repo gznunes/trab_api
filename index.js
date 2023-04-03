@@ -91,7 +91,7 @@ app.get("/chamada/:id", async(req, res) =>{
     const {id} = req.params;
     try {
         const livros = await pool.query("SELECT * FROM CHAMADA WHERE sala = $1",[id]);
-        res.json(livros.rows[0])
+        res.json(livros.rows)
     } catch (err) {
         console.error(err.message);
     }
