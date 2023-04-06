@@ -7,7 +7,7 @@ const pool = require("./db");
 
 app.use(express.json())
 
-//inserir
+//inserir move
 
 app.post("/livros", async(req, res) => {
     try {
