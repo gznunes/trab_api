@@ -25,7 +25,8 @@ app.post("/chamada", async(req, res) => {
     try {
         const chamada = req.body;
         // const sql = "INSERT INTO CHAMADA(sala,nome) VALUES ($1,$2) RETURNING *"
-        // const values = [chamada.sala,chamada.nome]
+        // const values = [chamada.sala,chamada.nome]\
+        console.log(chamada.data)
         const sql = "INSERT INTO CHAMADA(sala,nome,dia) VALUES ($1,$2,$3) RETURNING *"
         const values = [chamada.sala,chamada.nome,chamada.data]
         const novaChamada = await pool.query(sql, values)
