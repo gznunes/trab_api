@@ -33,6 +33,6 @@ const pool = new Pool({
 //     user: 'postgres',
 //     password: 'admin',
 //     database: 'crud_produtos'
-// }); postgres://webchamada_user:vjGoHcz6H1fVkNftqfrPBcW3cu5EafH7@dpg-cigfuitgkuvojj90m7eg-a.oregon-postgres.render.com/webchamada
+// }); 
 
 module.exports = pool;
