@@ -29,9 +29,9 @@ app.post("/chamada", async(req, res) => {
         f = new Intl.DateTimeFormat('en-US', {
             timeZone: "America/New_York"
         });
-        timepoa = f.format(chamada.data);
-        console.log(chamada.data);
-        console.log(timepoa);
+        // timepoa = f.format(chamada.data);
+        // console.log(chamada.data);
+        // console.log(timepoa);
         const sql = "INSERT INTO CHAMADA(sala,nome,dia) VALUES ($1,$2,$3) RETURNING *"
         const values = [chamada.sala,chamada.nome,chamada.data]
         const novaChamada = await pool.query(sql, values)
