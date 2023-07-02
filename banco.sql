@@ -40,3 +40,5 @@ DIA timestamptz);
 SELECT * FROM CHAMADA where dia between '2018-01-01' and '2024-01-31';
 
 INSERT INTO CHAMADA(sala,nome,dia) VALUES ('1200','gabriel','2018-07-02 20:00:00.000') RETURNING *
+
+SELECT * FROM CHAMADA WHERE DATE(dia) = '2023-07-02'
