@@ -42,7 +42,7 @@ app.post("/chamada", async(req, res) => {
 })
 
 // get relatorio
-app.post("/chamada", async(req, res) => {
+app.post("/relchamada", async(req, res) => {
     try {
         const chamada = req.body;
         // const sql = "INSERT INTO CHAMADA(sala,nome) VALUES ($1,$2) RETURNING *"
