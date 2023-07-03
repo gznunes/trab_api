@@ -55,7 +55,7 @@ app.post("/relchamada", async(req, res) => {
         // console.log(timepoa);
         // const sql = "INSERT INTO CHAMADA(sala,nome,dia) VALUES ($1,$2,$3) RETURNING *"
         const sql = "SELECT * FROM CHAMADA WHERE DATE(dia) = $1 and sala = $2"
-        const values = [chamada.data,chamada.sala]
+        const values = [chamada.dataconsulta,chamada.sala]
         const novaChamada = await pool.query(sql, values)
         res.json(novaChamada.rows[0]);
     } catch (err) {
