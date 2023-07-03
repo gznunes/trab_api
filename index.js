@@ -57,7 +57,7 @@ app.post("/relchamada", async(req, res) => {
         const sql = "SELECT * FROM CHAMADA WHERE DATE(dia) = $1 and sala = $2"
         const values = [chamada.dataconsulta,chamada.sala]
         const novaChamada = await pool.query(sql, values)
-        res.json(novaChamada.rows);
+        res.json(novaChamada.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
