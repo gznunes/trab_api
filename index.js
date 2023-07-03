@@ -74,6 +74,17 @@ app.get("/chamada", async(req, res) =>{
     // }
 });
 
+// buscar por id
+app.get("/chamada/:id", async(req, res) =>{
+    const {id} = req.params;
+    try {
+        const livros = await pool.query("SELECT * FROM CHAMADA WHERE id = $1",[id]);
+        res.json(livros.rows[0])
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 app.get("/reservas", async(req, res) =>{
     try {
         const reservas = await pool.query("SELECT * FROM RESERVAS");
