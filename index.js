@@ -41,6 +41,28 @@ app.post("/chamada", async(req, res) => {
     }
 })
 
+// get relatorio
+app.post("/chamada", async(req, res) => {
+    try {
+        const chamada = req.body;
+        // const sql = "INSERT INTO CHAMADA(sala,nome) VALUES ($1,$2) RETURNING *"
+        // const values = [chamada.sala,chamada.nome]\
+        // f = new Intl.DateTimeFormat('en-US', {
+        //     timeZone: "America/New_York"
+        // });
+        // timepoa = f.format(chamada.data);
+        // console.log(chamada.data);
+        // console.log(timepoa);
+        // const sql = "INSERT INTO CHAMADA(sala,nome,dia) VALUES ($1,$2,$3) RETURNING *"
+        const sql = "SELECT * FROM CHAMADA WHERE DATE(dia) = $1 and sala = $2"
+        const values = [chamada.data,chamada.sala]
+        const novaChamada = await pool.query(sql, values)
+        res.json(novaChamada.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 app.post("/reservas", async(req, res) => {
     try {
         const reserva = req.body;
